@@ -7,5 +7,10 @@ export const metadata: Metadata = {
 };
 
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <iframe
+      src="https://grafana.cvte.com/d/cdxc854dyoa9sf/e68e92-e8a18c-e6a69c?orgId=1&kiosk=tv"
+      className="h-full w-full"
+    />
+  );
 }
