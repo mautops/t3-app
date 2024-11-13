@@ -1,6 +1,6 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import KEYCLOAKProvider from "next-auth/providers/KEYCLOAK";
+import KeycloakProvider from "next-auth/providers/keycloak";
 
 import { db } from "~/server/db";
 import {
@@ -38,7 +38,7 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    KEYCLOAKProvider({
+    KeycloakProvider({
       clientId: process.env.AUTH_KEYCLOAK_ID,
       clientSecret: process.env.AUTH_KEYCLOAK_SECRET,
       issuer: process.env.AUTH_KEYCLOAK_ISSUER,
