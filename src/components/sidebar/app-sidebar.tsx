@@ -17,7 +17,6 @@ import {
 import { NavMain } from "~/components/sidebar/nav-main";
 import { NavProjects } from "~/components/sidebar/nav-projects";
 import { NavUser } from "~/components/sidebar/nav-user";
-import { TeamSwitcher } from "~/components/sidebar/team-switcher";
 import {
   Sidebar,
   SidebarContent,
@@ -26,6 +25,7 @@ import {
   SidebarRail,
 } from "~/components/ui/sidebar";
 import { ThemeToggle } from "../utils/theme";
+import { NavHeader } from "./nav-header";
 
 // This is sample data.
 const data = {
@@ -33,6 +33,11 @@ const data = {
     name: "shadcn",
     email: "m@example.com",
     avatar: "/avatars/shadcn.jpg",
+  },
+  header: {
+    name: "Acme Inc",
+    plan: "Enterprise",
+    logo: GalleryVerticalEnd,
   },
   teams: [
     {
@@ -161,7 +166,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+        <NavHeader header={data.header} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
