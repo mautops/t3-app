@@ -67,5 +67,16 @@ export const authConfig = {
         id: user.id,
       },
     }),
+    jwt: ({ token, user, account, profile, isNewUser }) => {
+      if (user) {
+        token.id = user.id;
+      }
+      console.log("token", token);
+      console.log("user", user);
+      console.log("account", account);
+      console.log("profile", profile);
+      console.log("isNewUser", isNewUser);
+      return token;
+    },
   },
 } satisfies NextAuthConfig;
