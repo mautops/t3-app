@@ -60,13 +60,18 @@ export const authConfig = {
     verificationTokensTable: verificationTokens,
   }),
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: ({ session, user, token }) => {
+      console.log("session", session);
+      console.log("user", user);
+      console.log("token", token);
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: user.id,
+        },
+      };
+    },
     jwt: ({ token, user, account, profile, isNewUser }) => {
       if (user) {
         token.id = user.id;
