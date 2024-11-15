@@ -69,6 +69,7 @@ export const authConfig = {
         user: {
           ...session.user,
           id: user.id,
+          accessToken: token.accessToken,
         },
       };
     },
