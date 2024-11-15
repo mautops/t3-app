@@ -1,14 +1,14 @@
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
+// import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import KeycloakProvider from "next-auth/providers/keycloak";
 
-import { db } from "~/server/db";
-import {
-  accounts,
-  sessions,
-  users,
-  verificationTokens,
-} from "~/server/db/schema";
+// import { db } from "~/server/db";
+// import {
+//   accounts,
+//   sessions,
+//   users,
+//   verificationTokens,
+// } from "~/server/db/schema";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -53,12 +53,12 @@ export const authConfig = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-  adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
-  }),
+  // adapter: DrizzleAdapter(db, {
+  //   usersTable: users,
+  //   accountsTable: accounts,
+  //   sessionsTable: sessions,
+  //   verificationTokensTable: verificationTokens,
+  // }),
   // session: {
   //   strategy: "jwt",
   // },
@@ -73,7 +73,7 @@ export const authConfig = {
         accessToken: token.accessToken,
       };
     },
-    jwt: ({ token, user, account, profile, isNewUser }) => {
+    jwt: ({ token, account }) => {
       if (account) {
         token.accessToken = account.access_token;
       }
