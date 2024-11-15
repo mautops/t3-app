@@ -59,18 +59,18 @@ export const authConfig = {
     sessionsTable: sessions,
     verificationTokensTable: verificationTokens,
   }),
-  session: {
-    strategy: "jwt",
-  },
+  // session: {
+  //   strategy: "jwt",
+  // },
   callbacks: {
     session: ({ session, user, token }) => {
-      session.accessToken = token.accessToken;
       return {
         ...session,
         user: {
           ...session.user,
           id: user.id,
         },
+        accessToken: token.accessToken,
       };
     },
     jwt: ({ token, user, account, profile, isNewUser }) => {
