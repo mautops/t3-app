@@ -59,12 +59,11 @@ export const authConfig = {
     sessionsTable: sessions,
     verificationTokensTable: verificationTokens,
   }),
+  session: {
+    jwt: true,
+  },
   callbacks: {
     session: ({ session, user, token }) => {
-      console.log("session", session);
-      console.log("user", user);
-      console.log("token", token);
-      session.accessToken = token.accessToken;
       return {
         ...session,
         user: {
@@ -77,11 +76,6 @@ export const authConfig = {
       if (user) {
         token.id = user.id;
       }
-      console.log("token", token);
-      console.log("user", user);
-      console.log("account", account);
-      console.log("profile", profile);
-      console.log("isNewUser", isNewUser);
       return token;
     },
   },
