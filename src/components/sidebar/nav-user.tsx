@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import {
   SidebarMenu,
   SidebarMenuButton,
@@ -110,7 +110,7 @@ export function NavUser() {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <LogOut />
-                Log out
+                <a onClick={() => signOut()}>Log out</a>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

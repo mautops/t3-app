@@ -64,18 +64,18 @@ export const authConfig = {
   },
   callbacks: {
     session: ({ session, user, token }) => {
+      session.accessToken = token.accessToken;
       return {
         ...session,
         user: {
           ...session.user,
           id: user.id,
-          accessToken: token.accessToken,
         },
       };
     },
     jwt: ({ token, user, account, profile, isNewUser }) => {
-      if (user) {
-        token.id = user.id;
+      if (account) {
+        token.accessToken = account.access_token;
       }
       return token;
     },
