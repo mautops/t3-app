@@ -64,6 +64,7 @@ export const authConfig = {
       console.log("session", session);
       console.log("user", user);
       console.log("token", token);
+      session.accessToken = token.accessToken;
       return {
         ...session,
         user: {
