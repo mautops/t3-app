@@ -59,9 +59,9 @@ export const authConfig = {
   //   sessionsTable: sessions,
   //   verificationTokensTable: verificationTokens,
   // }),
-  // session: {
-  //   strategy: "jwt",
-  // },
+  session: {
+    strategy: "jwt",
+  },
   callbacks: {
     session: ({ session, user, token }) => {
       return {
