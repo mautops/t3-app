@@ -20,16 +20,17 @@ declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
       id: string;
+      accessToken: string;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // accessToken: string;
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    // ...other properties
+    // role: UserRole;
+    accessToken: string;
+  }
 }
 
 /**
@@ -70,8 +71,8 @@ export const authConfig = {
         user: {
           ...session.user,
           id: user.id,
+          accessToken: token.accessToken,
         },
-        ...token,
       };
     },
     jwt: ({ token, account }) => {
