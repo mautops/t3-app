@@ -18,9 +18,9 @@ import {
  */
 declare module "next-auth" {
   interface Session extends DefaultSession {
+    accessToken: string;
     user: {
       id: string;
-      accessToken: string;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
