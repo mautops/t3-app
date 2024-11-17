@@ -53,31 +53,30 @@ export const authConfig = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
-  // adapter: DrizzleAdapter(db, {
-  //   usersTable: users,
-  //   accountsTable: accounts,
-  //   sessionsTable: sessions,
-  //   verificationTokensTable: verificationTokens,
-  // }),
+  adapter: DrizzleAdapter(db, {
+    usersTable: users,
+    accountsTable: accounts,
+    sessionsTable: sessions,
+    verificationTokensTable: verificationTokens,
+  }),
   session: {
     strategy: "jwt",
   },
   callbacks: {
     session: ({ session, user, token }) => {
-      return {
-        ...session,
-        user: {
-          ...session.user,
-          id: user.id,
-        },
-        accessToken: token.accessToken,
-      };
+      session.user = token;
+      return session;
+      // return {
+      //   ...session,
+      //   user: {
+      //     ...session.user,
+      //     id: user.id,
+      //   },
+      //   accessToken: token.accessToken,
+      // };
     },
-    jwt: ({ token, account }) => {
-      if (account) {
-        token.accessToken = account.access_token;
-      }
-      return token;
+    jwt: ({ token, user }) => {
+      return { ...token, accessToken: user.accessToken };
     },
   },
 } satisfies NextAuthConfig;
