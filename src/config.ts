@@ -26,10 +26,11 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+  interface User {
+    accessToken: string;
+    // ...other properties
+    // role: UserRole;
+  }
 }
 
 /**
