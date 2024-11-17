@@ -26,11 +26,11 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
-  interface User {
-    accessToken: string;
-    // ...other properties
-    // role: UserRole;
-  }
+  // interface User {
+  //   // accessToken: string;
+  //   // ...other properties
+  //   // role: UserRole;
+  // }
 }
 
 /**
@@ -76,7 +76,7 @@ export const authConfig = {
       };
     },
     jwt: ({ token, user }) => {
-      return { ...token, accessToken: user.accessToken };
+      return { ...token, ...user };
     },
   },
 } satisfies NextAuthConfig;
