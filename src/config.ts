@@ -21,6 +21,7 @@ declare module "next-auth" {
     accessToken: string;
     user: {
       id: string;
+      accessToken: string;
       // ...other properties
       // role: UserRole;
     } & DefaultSession["user"];
@@ -70,13 +71,13 @@ export const authConfig = {
         ...session,
         user: {
           ...session.user,
+          accessToken: token.accessToken,
           id: user.id,
         },
-        accessToken: token.accessToken,
       };
     },
-    jwt: ({ token, user }) => {
-      return { ...token, ...user };
+    jwt: ({ token, account }) => {
+      return { ...token, ...account };
     },
   },
 } satisfies NextAuthConfig;

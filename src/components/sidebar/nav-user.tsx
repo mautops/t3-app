@@ -30,8 +30,8 @@ import { Button } from "../ui/button";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const { data: session } = useSession();
-  console.log("------>", session);
+  const { data: session, status } = useSession();
+  console.log("------==>", session, status);
   return (
     <SidebarMenu>
       <SidebarMenuItem>
