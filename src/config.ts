@@ -59,9 +59,6 @@ export const authConfig = {
     sessionsTable: sessions,
     verificationTokensTable: verificationTokens,
   }),
-  session: {
-    strategy: "jwt",
-  },
   callbacks: {
     session: ({ session, user, token }) => {
       return {
@@ -72,9 +69,9 @@ export const authConfig = {
         },
       };
     },
-    jwt: ({ token, account }) => {
-      token.accessToken = account.access_token;
-      return token;
+    signIn: ({ user, account }) => {
+      console.log("------>", user, account);
+      return true;
     },
   },
 } satisfies NextAuthConfig;
